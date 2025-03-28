@@ -10,14 +10,14 @@ services:
   depends_on:
    - mysqlservice 
   networks:
-   - rede_compartilhada_container 
+   - rede_interna 
   command: ["uvicorn","main:app","--reload"]
 
  mysqlservice:
   image: mysql:latest
   container_name: mysqlservice
-  restart: no
-  enviroment:
+  restart: always
+  environment:
    MYSQL_ROOT_PASSWORD: "5912"
   ports:
    - "3306:3306"
@@ -26,13 +26,12 @@ services:
    - mysql_data:/var/lib/mysql
    - ./init.sql:/docker-entrypoint-initdb.d/init.sql
   networks:
-   - rede_compartilhada_container
+   - rede_interna
 
 volumes:
- mysql_data
+ mysql_data:
 
 networks:
- rede_compartilhada_container
- # driver: bridge
-  external: true
-   
+  rede_interna:
+    external: true
+

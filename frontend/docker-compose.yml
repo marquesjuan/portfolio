@@ -1,0 +1,16 @@
+services:
+ angularservice:
+  build:
+   context: .
+  user: "node"
+  volumes:
+   - .:/home/node/app
+  ports:
+   - "4200:4200"
+  command: ["ng","serve","--host","0.0.0.0"]
+  networks:
+   - rede_interna
+
+networks:
+ rede_interna:
+  external: true
