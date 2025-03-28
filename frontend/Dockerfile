@@ -2,7 +2,7 @@ FROM node:22.14
 
 WORKDIR /home/node/app
 
-COPY . .
+COPY ./portfolio .
 
 RUN npm install -g @angular/cli && npm install
 

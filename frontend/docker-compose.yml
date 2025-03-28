@@ -3,8 +3,9 @@ services:
   build:
    context: .
   user: "node"
+  container_name: "angularservice"
   volumes:
-   - .:/home/node/app
+   - ./portfolio:/home/node/app
   ports:
    - "4200:4200"
   command: ["ng","serve","--host","0.0.0.0"]
